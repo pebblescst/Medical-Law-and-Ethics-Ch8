@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Law &amp; Ethics — Chapter 8</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root {
+    --indigo:  #3730A3; --indigo-lt:#E0E7FF; --indigo-dk:#1E1B4B;
+    --blue:    #1D4ED8; --blue-lt:  #DBEAFE; --blue-dk:  #1E3A8A;
+    --teal:    #0E7490; --teal-lt:  #CFFAFE; --teal-dk:  #083344;
+    --green:   #166534; --green-lt: #DCFCE7; --green-dk: #052E16;
+    --amber:   #B45309; --amber-lt: #FEF3C7; --amber-dk: #451A03;
+    --coral:   #C2410C; --coral-lt: #FFEDD5; --coral-dk: #431407;
+    --violet:  #6D28D9; --violet-lt:#EDE9FE; --violet-dk:#2E1065;
+    --rose:    #9D174D; --rose-lt:  #FCE7F3; --rose-dk:  #500724;
+    --slate:   #334155; --slate-lt: #F1F5F9; --slate-dk: #0F172A;
+    --red:     #991B1B; --red-lt:   #FEE2E2; --red-dk:   #450A0A;
+    --gray-50: #F9FAFB; --gray-100: #F3F4F6; --gray-200: #E5E7EB;
+    --gray-400:#9CA3AF; --gray-600: #4B5563; --gray-700: #374151; --black:#111827;
+    --font:'DM Sans',sans-serif; --mono:'DM Mono',monospace;
+    --radius:10px; --radius-sm:6px;
+  }
+  body { font-family:var(--font); background:var(--gray-50); color:var(--black); }
+  .module { max-width:860px; margin:0 auto; padding:2rem 1.5rem 4rem; }
+  .module-header { background:var(--indigo-dk); border-radius:var(--radius); padding:1.75rem 2rem; margin-bottom:1.5rem; display:flex; gap:1.5rem; align-items:flex-start; }
+  .header-icon { width:52px; height:52px; border-radius:var(--radius-sm); background:rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .header-icon svg { width:28px; height:28px; stroke:#fff; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .header-text h1 { font-size:20px; font-weight:600; color:#fff; }
+  .header-text p  { font-size:13px; color:#A5B4FC; margin-top:3px; }
+  .progress-wrap { margin-top:14px; display:flex; align-items:center; gap:10px; }
+  .progress-bg   { flex:1; height:5px; background:rgba(255,255,255,0.2); border-radius:3px; overflow:hidden; }
+  .progress-fill { height:100%; background:#818CF8; border-radius:3px; transition:width 0.5s; width:0%; }
+  .progress-label { font-size:12px; color:#A5B4FC; white-space:nowrap; }
+  .nav-row { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:1.5rem; }
+  .tab { padding:7px 16px; font-size:13px; font-family:var(--font); font-weight:500; border:1px solid var(--gray-200); border-radius:100px; background:#fff; color:var(--gray-600); cursor:pointer; transition:all 0.15s; }
+  .tab:hover  { border-color:var(--indigo); color:var(--indigo); }
+  .tab.active { background:var(--indigo); border-color:var(--indigo); color:#fff; }
+  .section { display:none; }
+  .section.active { display:block; animation:fadeIn 0.2s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+  .card { background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius); padding:1.25rem 1.5rem; margin-bottom:1rem; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:12px; }
+  .two-col   { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; }
+  @media(max-width:620px){ .two-col,.three-col { grid-template-columns:1fr } }
+  .badge { font-size:11px; font-weight:600; padding:2px 8px; border-radius:20px; }
+  .badge-indigo { background:var(--indigo-lt); color:var(--indigo-dk); }
+  .badge-blue   { background:var(--blue-lt);   color:var(--blue-dk); }
+  .badge-teal   { background:var(--teal-lt);   color:var(--teal-dk); }
+  .badge-green  { background:var(--green-lt);  color:var(--green-dk); }
+  .badge-amber  { background:var(--amber-lt);  color:var(--amber-dk); }
+  .badge-violet { background:var(--violet-lt); color:var(--violet-dk); }
+  .badge-red    { background:var(--red-lt);    color:var(--red-dk); }
+  .badge-slate  { background:var(--slate-lt);  color:var(--slate-dk); }
+  .badge-coral  { background:var(--coral-lt);  color:var(--coral-dk); }
+  .badge-rose   { background:var(--rose-lt);   color:var(--rose-dk); }
+  .tip { border-radius:var(--radius-sm); padding:10px 14px; font-size:13px; line-height:1.6; margin-top:10px; }
+  .tip.indigo { background:var(--indigo-lt); color:var(--indigo-dk); border-left:3px solid var(--indigo); }
+  .tip.blue   { background:var(--blue-lt);   color:var(--blue-dk);   border-left:3px solid var(--blue); }
+  .tip.teal   { background:var(--teal-lt);   color:var(--teal-dk);   border-left:3px solid var(--teal); }
+  .tip.green  { background:var(--green-lt);  color:var(--green-dk);  border-left:3px solid var(--green); }
+  .tip.amber  { background:var(--amber-lt);  color:var(--amber-dk);  border-left:3px solid var(--amber); }
+  .tip.violet { background:var(--violet-lt); color:var(--violet-dk); border-left:3px solid var(--violet); }
+  .tip.coral  { background:var(--coral-lt);  color:var(--coral-dk);  border-left:3px solid var(--coral); }
+  .tip.red    { background:var(--red-lt);    color:var(--red-dk);    border-left:3px solid var(--red); }
+  .tip.slate  { background:var(--slate-lt);  color:var(--slate-dk);  border-left:3px solid var(--slate); }
+  .vs-item { border:1px solid var(--gray-200); border-radius:var(--radius-sm); padding:10px 12px; }
+  .vs-head { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px; }
+  .vs-body { font-size:13px; color:var(--gray-600); line-height:1.5; }
+  /* Amendment chips */
+  .amend-chip { display:flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid var(--gray-200); border-radius:var(--radius-sm); font-size:12.5px; color:var(--gray-700); background:#fff; }
+  .amend-num { font-family:var(--mono); font-size:13px; font-weight:700; color:var(--indigo-dk); min-width:32px; flex-shrink:0; }
+  /* HIPAA standard cards */
+  .std-card { border-radius:var(--radius-sm); padding:12px 14px; margin-bottom:6px; }
+  .std-tag  { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; opacity:0.75; margin-bottom:3px; }
+  .std-name { font-size:14px; font-weight:700; margin-bottom:5px; }
+  .std-body { font-size:12.5px; opacity:0.85; line-height:1.5; }
+  /* Permission rows */
+  .perm-row { display:flex; gap:10px; align-items:flex-start; padding:9px 0; border-bottom:1px solid var(--gray-200); }
+  .perm-row:last-child { border-bottom:none; }
+  .perm-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; margin-top:4px; background:var(--teal); }
+  .perm-title { font-size:13px; font-weight:600; color:var(--black); margin-bottom:2px; }
+  .perm-body  { font-size:12px; color:var(--gray-600); line-height:1.4; }
+  /* Fraud law cards */
+  .fraud-card { border-radius:var(--radius-sm); padding:14px 16px; margin-bottom:8px; }
+  .fraud-tag  { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; opacity:0.7; margin-bottom:4px; }
+  .fraud-name { font-size:14px; font-weight:700; margin-bottom:5px; }
+  .fraud-body { font-size:12.5px; opacity:0.85; line-height:1.55; }
+  /* Flashcards */
+  .fc-nav { display:flex; align-items:center; gap:12px; margin-bottom:1rem; }
+  .fc-counter { font-size:13px; color:var(--gray-400); flex:1; text-align:center; }
+  .fc-btn { width:36px; height:36px; border:1px solid var(--gray-200); border-radius:50%; background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--gray-600); font-size:16px; transition:all 0.15s; }
+  .fc-btn:hover { border-color:var(--indigo); color:var(--indigo); }
+  .flip-wrap { perspective:1000px; height:170px; cursor:pointer; user-select:none; }
+  .flip-inner { width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform 0.5s cubic-bezier(.4,0,.2,1); }
+  .flip-inner.flipped { transform:rotateY(180deg); }
+  .flip-front,.flip-back { position:absolute; inset:0; backface-visibility:hidden; border-radius:var(--radius); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:1.5rem; text-align:center; border:1px solid var(--gray-200); }
+  .flip-front { background:#fff; }
+  .flip-back  { background:var(--indigo-lt); border-color:#A5B4FC; transform:rotateY(180deg); }
+  .flip-term { font-size:20px; font-weight:600; color:var(--black); line-height:1.3; }
+  .flip-hint { font-size:11px; color:var(--gray-400); margin-top:6px; text-transform:uppercase; letter-spacing:0.06em; }
+  .flip-def  { font-size:14px; font-weight:600; color:var(--indigo-dk); line-height:1.4; }
+  .flip-ex   { font-size:12px; color:var(--indigo); margin-top:6px; line-height:1.4; }
+  .fc-shuffle { padding:6px 14px; font-size:12px; font-family:var(--font); border:1px solid var(--gray-200); border-radius:100px; background:#fff; color:var(--gray-600); cursor:pointer; margin-left:auto; display:block; margin-bottom:10px; }
+  .fc-shuffle:hover { border-color:var(--indigo); color:var(--indigo); }
+  .quiz-progress { display:flex; gap:4px; flex-wrap:wrap; margin-bottom:1.25rem; }
+  .q-dot { width:10px; height:10px; border-radius:50%; background:var(--gray-200); }
+  .q-dot.pass { background:var(--indigo); }
+  .q-dot.fail { background:#E24B4A; }
+  .quiz-q-text { font-size:16px; font-weight:600; margin-bottom:1rem; line-height:1.5; }
+  .quiz-opts { display:flex; flex-direction:column; gap:8px; margin-bottom:1rem; }
+  .q-opt { padding:11px 16px; border:1px solid var(--gray-200); border-radius:var(--radius-sm); background:#fff; font-size:14px; font-family:var(--font); cursor:pointer; text-align:left; transition:all 0.15s; }
+  .q-opt:hover:not(:disabled) { border-color:var(--indigo); background:var(--indigo-lt); }
+  .q-opt.correct { background:var(--green-lt); border-color:var(--green); color:var(--green-dk); font-weight:500; }
+  .q-opt.wrong   { background:#FCEBEB; border-color:#E24B4A; color:#501313; }
+  .q-fb { font-size:13px; padding:9px 14px; border-radius:var(--radius-sm); margin-bottom:1rem; }
+  .q-fb.correct { background:var(--green-lt); color:var(--green-dk); }
+  .q-fb.wrong   { background:#FCEBEB; color:#501313; }
+  .quiz-next { padding:9px 20px; font-size:13px; font-family:var(--font); font-weight:500; border:1px solid var(--gray-200); border-radius:100px; background:#fff; cursor:pointer; }
+  .score-wrap { text-align:center; padding:2rem 0 1rem; }
+  .score-big { font-size:52px; font-weight:700; line-height:1; }
+  .score-big.great { color:var(--indigo); }
+  .score-big.ok    { color:var(--amber); }
+  .score-big.retry { color:#E24B4A; }
+  .score-msg { font-size:15px; color:var(--gray-600); margin-top:8px; margin-bottom:1.5rem; }
+  .retry-btn { padding:10px 24px; font-size:14px; font-family:var(--font); font-weight:500; border:1px solid var(--indigo); border-radius:100px; background:var(--indigo-lt); color:var(--indigo-dk); cursor:pointer; transition:all 0.15s; }
+  .retry-btn:hover { background:var(--indigo); color:#fff; }
+</style>
+</head>
+<body>
+<div class="module">
+
+  <div class="module-header">
+    <div class="header-icon">
+      <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+    </div>
+    <div style="flex:1">
+      <div class="header-text">
+        <h1>Law &amp; Ethics for Health Professions — Chapter 8</h1>
+        <p>Privacy, Security, and Fraud &nbsp;·&nbsp; Judson, Harrison &amp; Albright, 10th Ed. &nbsp;·&nbsp; 6 sections &nbsp;·&nbsp; 20 flashcards &nbsp;·&nbsp; 10-question quiz</p>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-bg"><div class="progress-fill" id="prog-fill"></div></div>
+        <div class="progress-label" id="prog-label">0%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-row" role="tablist">
+    <button class="tab active" onclick="showSec('overview',this)">Overview</button>
+    <button class="tab" onclick="showSec('privacy',this)">Privacy &amp; confidentiality</button>
+    <button class="tab" onclick="showSec('hipaa-privacy',this)">HIPAA privacy rule</button>
+    <button class="tab" onclick="showSec('hipaa-security',this)">HIPAA security rule</button>
+    <button class="tab" onclick="showSec('fraud',this)">Fraud &amp; abuse laws</button>
+    <button class="tab" onclick="showSec('flashcards',this)">Flashcards</button>
+    <button class="tab" onclick="showSec('quiz',this)">Quiz</button>
+  </div>
+
+  <!-- ════════ OVERVIEW ════════ -->
+  <div class="section active" id="sec-overview">
+    <div class="card">
+      <div class="card-title" style="color:var(--indigo)">Chapter 8 — Learning Outcomes</div>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
+        <div class="vs-item"><div class="vs-head" style="color:var(--indigo)">8.1 — Constitutional amendments &amp; privacy laws</div><div class="vs-body">List the U.S. constitutional amendments and federal privacy laws that pertain to healthcare — establishing the constitutional foundation of the right to privacy</div></div>
+        <div class="vs-item"><div class="vs-head" style="color:var(--blue)">8.2 — Practitioner responsibilities for privacy</div><div class="vs-body">Briefly outline the responsibilities of healthcare practitioners concerning privacy, confidentiality, and privileged information — practical obligations in daily practice</div></div>
+        <div class="vs-item"><div class="vs-head" style="color:var(--teal)">8.3 — HIPAA Privacy Rule vs. Security Rule</div><div class="vs-body">Distinguish between HIPAA's Privacy Rule (what information is protected and who can use/disclose it) and Security Rule (technical and administrative safeguards for electronic PHI)</div></div>
+        <div class="vs-item"><div class="vs-head" style="color:var(--red)">8.4 — Federal fraud &amp; abuse laws</div><div class="vs-body">Describe the four major federal laws that cover fraud and abuse in healthcare: the Federal False Claims Act, the Anti-Kickback Law, the Stark Law, and the Criminal Health Care Fraud Statute</div></div>
+      </div>
+      <div class="tip indigo"><strong>Chapter focus:</strong> Chapter 8 bridges two critical areas — the privacy and security framework protecting patient health information (from constitutional foundations through HIPAA's detailed rules) and the federal fraud and abuse laws that govern financial conduct in the healthcare industry. Both areas carry severe civil and criminal penalties and are major compliance priorities for every healthcare organization.</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--slate)">At a Glance — HIPAA's Four Standards</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div class="vs-item" style="border-color:var(--teal)"><div class="vs-head" style="color:var(--teal)">Standard 1 — Transactions &amp; Code Sets</div><div class="vs-body">Establishes uniform electronic data standards for healthcare transactions (claims, remittances, eligibility checks) and medical code sets (ICD, CPT, HCPCS). Ensures different systems can communicate consistently in electronic billing.</div></div>
+        <div class="vs-item" style="border-color:var(--indigo)"><div class="vs-head" style="color:var(--indigo)">Standard 2 — Privacy Rule</div><div class="vs-body">Protects the privacy of individually identifiable health information (PHI) — regardless of form. Defines who may access, use, and disclose PHI; establishes patient rights regarding their health information.</div></div>
+        <div class="vs-item" style="border-color:var(--blue)"><div class="vs-head" style="color:var(--blue)">Standard 3 — Security Rule</div><div class="vs-body">Establishes requirements for protecting the confidentiality, integrity, and availability of ELECTRONIC PHI (ePHI) specifically. Requires technical, administrative, and physical safeguards.</div></div>
+        <div class="vs-item" style="border-color:var(--amber)"><div class="vs-head" style="color:var(--amber)">Standard 4 — National Identifier Standards</div><div class="vs-body">Establishes unique National Provider Identifiers (NPI) for healthcare providers, payers, and employers used in all electronic transactions — enabling consistent identification across the system.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ PRIVACY & CONFIDENTIALITY ════════ -->
+  <div class="section" id="sec-privacy">
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title" style="color:var(--indigo)">The Right to Privacy — Constitutional Foundation</div>
+        <div class="tip indigo" style="margin-bottom:12px"><strong>Privacy:</strong> Freedom from unauthorized intrusion. The right to privacy is not explicitly stated in the U.S. Constitution, but is derived from multiple constitutional amendments and has been recognized by the Supreme Court as a fundamental constitutional right.</div>
+        <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Six amendments that support the right to privacy:</div>
+        <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px">
+          <div class="amend-chip"><div class="amend-num">1st</div><div>Freedom of speech, religion, press, and assembly — protection from government control of personal beliefs and associations; foundational to personal autonomy</div></div>
+          <div class="amend-chip"><div class="amend-num">3rd</div><div>Prohibition on quartering soldiers in private homes — establishes the principle that the home is a private sanctuary protected from government intrusion</div></div>
+          <div class="amend-chip"><div class="amend-num">4th</div><div>Protection from unreasonable searches and seizures — requires warrants based on probable cause; most directly relevant to privacy of persons and property from government intrusion</div></div>
+          <div class="amend-chip"><div class="amend-num">5th</div><div>Protection against self-incrimination and due process — the right to remain silent; protects individuals from being compelled to disclose information against themselves</div></div>
+          <div class="amend-chip"><div class="amend-num">9th</div><div>Rights retained by the people — states that the enumeration of specific rights in the Constitution shall not deny or disparage other rights retained by the people; used by courts to recognize unenumerated rights including privacy</div></div>
+          <div class="amend-chip"><div class="amend-num">14th</div><div>Equal protection and due process — prohibits states from depriving persons of life, liberty, or property without due process of law; used to extend federal constitutional rights (including privacy) to state government actions</div></div>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Four federal privacy law principles:</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div class="vs-item"><div class="vs-head" style="color:var(--indigo)">Minimum necessary collection</div><div class="vs-body">Information collected about individuals should be <strong>limited to what is necessary</strong> to carry out the functions of the business or government agency collecting it — no collecting "just in case"</div></div>
+          <div class="vs-item"><div class="vs-head" style="color:var(--blue)">Limited internal access</div><div class="vs-body">Access to personal information within the organization should be <strong>limited to employees who must use it</strong> in performing their job duties — "need to know" access principle</div></div>
+          <div class="vs-item"><div class="vs-head" style="color:var(--teal)">No unauthorized external release</div><div class="vs-body">Personal information <strong>cannot be released outside the organization without permission</strong> of the subject — the individual controls who receives their information</div></div>
+          <div class="vs-item"><div class="vs-head" style="color:var(--amber)">Transparency and accuracy</div><div class="vs-body">The person should <strong>know that information is being collected</strong> and should have the opportunity to <strong>check the information for accuracy</strong> — notice and access rights</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--teal)">Confidentiality &amp; Privileged Communication</div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
+          <div class="vs-item" style="border-color:var(--teal)">
+            <div class="vs-head" style="color:var(--teal)">Confidentiality</div>
+            <div class="vs-body">The act of holding information in confidence — <strong>not to be released to unauthorized individuals</strong>. Healthcare practitioners have both an ethical and legal duty of confidentiality toward their patients. This duty applies to all patient information regardless of how it was obtained or in what form it exists (verbal, written, electronic).</div>
+          </div>
+          <div class="vs-item" style="border-color:var(--violet)">
+            <div class="vs-head" style="color:var(--violet)">Privileged communication</div>
+            <div class="vs-body">Information held confidential within a <strong>protected relationship</strong>. In law, certain relationships are recognized as creating a "privilege" that protects communications from compelled disclosure in legal proceedings — including physician-patient, attorney-client, priest-penitent, and therapist-patient relationships. The patient (not the provider) holds the privilege and can waive or assert it.</div>
+          </div>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Maintaining confidentiality in practice:</div>
+        <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:12px">
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--teal);font-weight:700">✓</span> Obtain signed consent before releasing any information</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--teal);font-weight:700">✓</span> Avoid making judgments about patients' morals or lifestyle choices</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--teal);font-weight:700">✓</span> Treat financial information as confidential — insurance, billing, and payment information is protected PHI</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--teal);font-weight:700">✓</span> Do not use the patient's name on the phone if others are nearby — "overhearing" is a privacy breach</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--teal);font-weight:700">✓</span> Use caution when leaving messages on voicemail — leave minimal information; never leave diagnosis or treatment details</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--teal);font-weight:700">✓</span> Keep patient information out of sight from other patients or visitors — turn screens, cover charts</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0"><span style="color:var(--teal);font-weight:700">✓</span> Make only legal exceptions to disclosure — know what is and is not a permitted disclosure</div>
+        </div>
+        <div class="tip amber"><strong>Waiving confidentiality — three circumstances:</strong><br>
+          ✦ A <strong>third party requests a medical examination</strong> (e.g., employment physical) and that party pays the physician's fee — the information goes to the paying party, not the patient<br>
+          ✦ A <strong>lawsuit results in patient records being subpoenaed</strong> — legal process overrides confidentiality<br>
+          ✦ <strong>Patient signs a written waiver</strong> agreeing to release — explicit patient authorization
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ HIPAA PRIVACY RULE ════════ -->
+  <div class="section" id="sec-hipaa-privacy">
+    <div class="card">
+      <div class="card-title" style="color:var(--indigo)">HIPAA Standard 2 — The Privacy Rule</div>
+      <div class="tip indigo" style="margin-bottom:12px">The Privacy Rule protects <strong>PHI (Protected Health Information)</strong> from unauthorized disclosure — regardless of whether it is spoken, written, or in electronic form. It is the broadest and most comprehensive of HIPAA's standards.</div>
+      <div class="two-col">
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">What is PHI? — Three-part definition:</div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px">
+            <div class="vs-item" style="border-color:var(--indigo)"><div class="vs-head" style="color:var(--indigo)">Past, present, or future physical or mental health conditions</div><div class="vs-body">Any diagnosis, symptom, complaint, test result, or health status — including mental health information; extends to historical health conditions, not just current ones</div></div>
+            <div class="vs-item" style="border-color:var(--blue)"><div class="vs-head" style="color:var(--blue)">Documentation of the provision of healthcare</div><div class="vs-body">Records of treatment, procedures, prescriptions, clinical notes, and any documentation created during the course of providing healthcare services</div></div>
+            <div class="vs-item" style="border-color:var(--teal)"><div class="vs-head" style="color:var(--teal)">Past, present, or future payment for healthcare</div><div class="vs-body">Billing records, insurance claims, payment history, and any financial information relating to healthcare — all protected as PHI even though it may appear to be purely financial data</div></div>
+          </div>
+          <div class="tip teal">PHI must be protected in <strong>all three forms</strong>: spoken (verbal), written (paper), and electronic (digital). The Privacy Rule applies to ALL forms — not just electronic records. This is a key distinction from the Security Rule, which covers only electronic PHI (ePHI).</div>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Covered Entities (CEs) and Business Associates (BAs):</div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px">
+            <div class="vs-item" style="border-color:var(--violet)">
+              <div class="vs-head" style="color:var(--violet)">Covered entities (CEs)</div>
+              <div class="vs-body">Healthcare providers who conduct administrative and financial transactions in electronic form. Includes all employees, volunteers, trainees, and all others under the control of the entity. Examples: hospitals, physician practices, outpatient clinics, health plans, and healthcare clearinghouses. The CE is directly bound by all HIPAA requirements.</div>
+            </div>
+            <div class="vs-item" style="border-color:var(--coral)">
+              <div class="vs-head" style="color:var(--coral)">Business associates (BAs)</div>
+              <div class="vs-body">Individuals or organizations that provide functions, activities, or services to a covered entity that involve <strong>access to, use of, or disclosure of PHI</strong>. Examples: billing companies, EHR vendors, cloud storage providers, transcription services, attorneys handling healthcare matters, accounting firms. BAs must sign a Business Associate Agreement (BAA) and are directly liable for HIPAA violations.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--teal)">HIPAA Permitted Uses &amp; Disclosures</div>
+      <div class="tip teal" style="margin-bottom:12px">The Privacy Rule identifies specific categories where PHI may be used or disclosed — either with or without patient authorization. Understanding these permissions is critical for daily healthcare practice.</div>
+      <div style="display:flex;flex-direction:column;gap:0">
+        <div class="perm-row">
+          <div class="perm-dot"></div>
+          <div>
+            <div class="perm-title">Disclosures to patients</div>
+            <div class="perm-body">Patients have the right to access, inspect, and receive copies of their own PHI. Covered entities must provide this access within 30 days of request (one 30-day extension permitted). Cannot be denied except in very limited circumstances.</div>
+          </div>
+        </div>
+        <div class="perm-row">
+          <div class="perm-dot"></div>
+          <div>
+            <div class="perm-title">Use or disclosure for Treatment, Payment, or Health Care Operations (TPO)</div>
+            <div class="perm-body">Covered entities may share PHI without patient authorization for treatment purposes (sharing with other providers), payment (billing, claims), and healthcare operations (quality improvement, training, peer review). This is the most commonly used permission and covers the vast majority of day-to-day information sharing in healthcare.</div>
+          </div>
+        </div>
+        <div class="perm-row">
+          <div class="perm-dot"></div>
+          <div>
+            <div class="perm-title">Use and disclosure with opportunity to agree or object</div>
+            <div class="perm-body">Informal permission — the patient is given a clear opportunity to agree or object to a specific use or disclosure. Examples: sharing information with family members involved in the patient's care, including in a hospital directory. If the patient agrees (or fails to object after being given the opportunity), disclosure is permitted.</div>
+          </div>
+        </div>
+        <div class="perm-row">
+          <div class="perm-dot"></div>
+          <div>
+            <div class="perm-title">Incidental uses and disclosures</div>
+            <div class="perm-body">Disclosures that are secondary to an otherwise permitted use — unavoidable in the course of normal healthcare operations. Permitted as long as reasonable precautions are taken. Examples: another patient overhearing a brief conversation between providers in a hallway; a visitor seeing a patient's name on a whiteboard. Reasonable precautions (lowering voices, positioning screens) are required but perfection is not.</div>
+          </div>
+        </div>
+        <div class="perm-row">
+          <div class="perm-dot"></div>
+          <div>
+            <div class="perm-title">Public interest and benefit activities — 12 national priorities</div>
+            <div class="perm-body">HIPAA permits PHI disclosure (without patient authorization) for important public purposes including: required reporting (abuse, public health threats, communicable diseases), law enforcement activities, national security and intelligence, organ donation, workers' compensation, research (with appropriate safeguards), and judicial and administrative proceedings. These 12 categories represent carefully balanced exceptions where the public interest outweighs individual privacy.</div>
+          </div>
+        </div>
+        <div class="perm-row" style="border-bottom:none">
+          <div class="perm-dot"></div>
+          <div>
+            <div class="perm-title">Limited data set</div>
+            <div class="perm-body">A partially de-identified data set used primarily for research, public health, and healthcare operations. Specific direct identifiers (name, address, phone, SSN, etc.) are removed, but some geographic and date information may remain. Requires a Data Use Agreement (DUA) between the CE and the recipient — less burdensome than full authorization but still provides some protection.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ HIPAA SECURITY RULE ════════ -->
+  <div class="section" id="sec-hipaa-security">
+    <div class="card">
+      <div class="card-title" style="color:var(--blue)">HIPAA Standard 3 — The Security Rule</div>
+      <div class="tip blue" style="margin-bottom:12px">The Security Rule applies specifically to <strong>electronic PHI (ePHI)</strong> — any PHI that is created, received, maintained, or transmitted in electronic form. Unlike the Privacy Rule (which covers all forms of PHI), the Security Rule is limited to electronic records. Its purpose is ensuring the <strong>confidentiality, integrity, and availability</strong> of ePHI.</div>
+      <div class="two-col">
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Five core Security Rule requirements:</div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px">
+            <div class="vs-item" style="border-color:var(--blue)"><div class="vs-head" style="color:var(--blue)">Implement safeguards for ePHI</div><div class="vs-body">CEs must implement administrative, physical, and technical safeguards to protect ePHI — covering how data is accessed, stored, and transmitted</div></div>
+            <div class="vs-item" style="border-color:var(--teal)"><div class="vs-head" style="color:var(--teal)">Ensure confidentiality, integrity, and availability</div><div class="vs-body">Confidentiality = ePHI is not disclosed to unauthorized persons. Integrity = ePHI is not altered or destroyed improperly. Availability = ePHI is accessible to authorized users when needed (disaster recovery)</div></div>
+            <div class="vs-item" style="border-color:var(--amber)"><div class="vs-head" style="color:var(--amber)">Protect against anticipated threats</div><div class="vs-body">Identify and protect against reasonably anticipated threats to security or integrity — requires ongoing risk assessment to identify vulnerabilities (cyberattacks, natural disasters, equipment failure)</div></div>
+            <div class="vs-item" style="border-color:var(--violet)"><div class="vs-head" style="color:var(--violet)">Protect against impermissible uses/disclosures</div><div class="vs-body">Protect against reasonably anticipated, impermissible uses or disclosures of ePHI — proactive measures against both external (hackers) and internal (workforce) threats</div></div>
+            <div class="vs-item" style="border-color:var(--green)"><div class="vs-head" style="color:var(--green)">Ensure workforce compliance</div><div class="vs-body">Ensure compliance by their entire workforce — training, policies, sanctions for violations, monitoring, and accountability throughout the organization</div></div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Three categories of Security Rule safeguards:</div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px">
+            <div class="vs-item"><div class="vs-head" style="color:var(--blue)">Administrative safeguards</div><div class="vs-body">Policies, procedures, workforce training, risk assessments, security officer designation, access management, contingency plans. The most extensive category — covers how the organization manages ePHI security through people and processes.</div></div>
+            <div class="vs-item"><div class="vs-head" style="color:var(--teal)">Physical safeguards</div><div class="vs-body">Physical measures to protect electronic systems and equipment. Examples: facility access controls (locked server rooms, key card access), workstation security (screen privacy filters, locking screens when unattended), device and media controls (inventory, proper disposal of hardware containing ePHI).</div></div>
+            <div class="vs-item"><div class="vs-head" style="color:var(--violet)">Technical safeguards</div><div class="vs-body">Technology and policies to protect ePHI and control access. Examples: unique user authentication (unique logins for every user), automatic logoff, encryption of ePHI in transmission and at rest, audit controls (logs tracking who accessed what and when), integrity controls (ensuring ePHI hasn't been improperly altered).</div></div>
+          </div>
+          <div class="tip blue"><strong>Privacy Rule vs. Security Rule — the critical distinction:</strong><br>
+            <strong>Privacy Rule:</strong> Covers ALL forms of PHI (spoken, written, electronic). Focuses on who can access, use, and disclose PHI and patients' rights.<br>
+            <strong>Security Rule:</strong> Covers ONLY electronic PHI (ePHI). Focuses on technical and administrative safeguards to protect the security of ePHI during transmission and storage.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--red)">Breach Notification &amp; HITECH</div>
+      <div class="two-col">
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Breach notification rules:</div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+            <div class="vs-item" style="border-color:var(--red)"><div class="vs-head" style="color:var(--red)">What is a breach</div><div class="vs-body">An <strong>impermissible use or disclosure of a patient's record</strong> by a covered entity — any access, use, or disclosure that violates the Privacy Rule and that is not low-probability of compromising PHI</div></div>
+            <div class="vs-item" style="border-color:var(--amber)"><div class="vs-head" style="color:var(--amber)">Small breaches (&lt;500 records)</div><div class="vs-body">Affected individuals must be notified; covered entity must log the breach and report to HHS annually</div></div>
+            <div class="vs-item" style="border-color:var(--red)"><div class="vs-head" style="color:var(--red)">Large breaches (&gt;500 records)</div><div class="vs-body">Must notify: (1) affected individuals, (2) <strong>the media in the applicable state or jurisdiction</strong>, and (3) HHS without delay. Media notification is required for breaches affecting 500+ records in a single state or jurisdiction.</div></div>
+            <div class="vs-item" style="border-color:var(--violet)"><div class="vs-head" style="color:var(--violet)">HHS OCR Breach Database</div><div class="vs-body">Since 2009, the HHS Office for Civil Rights (OCR) has maintained a public database of PHI breaches affecting 500+ records — commonly called the "Wall of Shame." Searchable by covered entity, state, and type of breach.</div></div>
+            <div class="vs-item" style="border-color:var(--slate)"><div class="vs-head" style="color:var(--slate)">Business associates</div><div class="vs-body">Business associates must also follow breach notification guidelines — must notify the covered entity promptly; the CE then notifies affected individuals and HHS</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="tip red"><strong>Substantial fines for non-compliance:</strong><br>
+          HIPAA violations carry a tiered civil penalty structure:<br>
+          ✦ Tier 1 (did not know): $100–$50,000 per violation<br>
+          ✦ Tier 2 (reasonable cause): $1,000–$50,000 per violation<br>
+          ✦ Tier 3 (willful neglect, corrected): $10,000–$50,000 per violation<br>
+          ✦ Tier 4 (willful neglect, not corrected): $50,000 per violation<br>
+          Annual cap per violation category: $1.9 million<br>
+          Criminal penalties also apply for intentional violations — up to $250,000 fine and 10 years imprisonment for the most serious violations.</div>
+          <div class="vs-item" style="margin-top:10px;border-color:var(--blue)">
+            <div class="vs-head" style="color:var(--blue)">HITECH Act — strengthened protections</div>
+            <div class="vs-body">The Health Information Technology for Economic and Clinical Health (HITECH) Act (2009) strengthened HIPAA privacy and security protections by:<br>
+            ✦ Making business associates directly liable for HIPAA violations<br>
+            ✦ Requiring breach notification<br>
+            ✦ Increasing civil and criminal penalties<br>
+            ✦ Expanding patient rights (access to electronic records, accounting of disclosures)<br>
+            ✦ Restricting sale of PHI without patient authorization</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ FRAUD & ABUSE ════════ -->
+  <div class="section" id="sec-fraud">
+    <div class="card">
+      <div class="card-title" style="color:var(--red)">Fraud &amp; Abuse in Healthcare — Overview</div>
+      <div class="tip red" style="margin-bottom:12px">Healthcare fraud costs the U.S. billions of dollars annually. Fraudulent spending is difficult to separate from total healthcare costs, fraud is increasing, and much fraud goes undetected. The <strong>Medicare Fraud Strike Force</strong> combines federal, state, and local law enforcement agencies to find and prosecute fraud and abuse in federal healthcare programs.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+        <div class="vs-item"><div class="vs-head" style="color:var(--red)">Healthcare fraud</div><div class="vs-body">Intentional deception or misrepresentation that an individual knows to be false and makes knowing it could result in some unauthorized benefit to themselves or another person. Fraud requires intent — the person KNEW the claim was false.</div></div>
+        <div class="vs-item"><div class="vs-head" style="color:var(--amber)">Healthcare abuse</div><div class="vs-body">Practices that are inconsistent with sound fiscal, business, or medical practices that result in unnecessary cost to healthcare programs. Abuse does NOT require intent — it can result from carelessness, poor practice, or ignorance of proper billing rules.</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--violet)">Four Major Federal Fraud &amp; Abuse Laws</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="fraud-card" style="background:var(--blue-lt);color:var(--blue-dk)">
+          <div class="fraud-tag">Federal Law 1</div>
+          <div class="fraud-name">Federal False Claims Act (FCA)</div>
+          <div class="fraud-body">
+            Allows <strong>individuals to bring civil actions on behalf of the federal government</strong> for false or fraudulent claims submitted to federal programs (Medicare, Medicaid, TRICARE, federal employees' health benefits).<br><br>
+            <strong>Qui tam provisions:</strong> "Qui tam" is a Latin abbreviation for the phrase "he who sues on behalf of the king as well as himself." Under qui tam provisions, a private individual (the "relator" or whistleblower) can file a sealed lawsuit on the government's behalf and share in any recovery. This financial incentive encourages insiders to report fraud.<br><br>
+            <strong>Whistleblower protections:</strong> The FCA protects whistleblowers from retaliation — employees who report fraud cannot be fired, demoted, harassed, or otherwise discriminated against.<br><br>
+            <strong>Whistleblower reward:</strong> Whistleblowers may share <strong>15% to 30%</strong> of any court-awarded damages recovered. Because healthcare fraud cases often involve billions of dollars, qui tam settlements can be life-changing for whistleblowers.<br><br>
+            <strong>Penalties:</strong> Treble (triple) damages plus $13,000–$27,000 civil penalty per false claim.
+          </div>
+        </div>
+        <div class="fraud-card" style="background:var(--amber-lt);color:var(--amber-dk)">
+          <div class="fraud-tag">Federal Law 2</div>
+          <div class="fraud-name">Federal Anti-Kickback Law (Anti-Kickback Statute — AKS)</div>
+          <div class="fraud-body">
+            It is illegal to <strong>knowingly and willfully receive or pay anything of value to influence a referral of federal healthcare program business</strong>. The AKS prohibits any form of remuneration (payment, gift, discount, kickback, bribe, rebate, or any other item of value) exchanged to induce or reward referrals of patients or business covered by Medicare, Medicaid, or other federal programs.<br><br>
+            <strong>Possible punishments:</strong><br>
+            ✦ <strong>Fines</strong> — civil monetary penalties up to $100,000 per violation<br>
+            ✦ <strong>Prison term</strong> — up to 10 years imprisonment per violation<br>
+            ✦ <strong>Loss of participation in federal programs</strong> — exclusion from Medicare and Medicaid (effectively ending ability to treat elderly and low-income patients in most healthcare settings)<br><br>
+            <strong>Safe harbors:</strong> The government has defined specific "safe harbor" practices that are excluded from AKS liability — including certain employment arrangements, space rentals, personal services arrangements, and group purchasing organizations. Strict compliance with safe harbor requirements is essential.
+          </div>
+        </div>
+        <div class="fraud-card" style="background:var(--teal-lt);color:var(--teal-dk)">
+          <div class="fraud-tag">Federal Law 3</div>
+          <div class="fraud-name">Stark Law (Physician Self-Referral Law)</div>
+          <div class="fraud-body">
+            <strong>Physicians or members of their immediate family who have a financial interest</strong> in an entity are restricted from referring patients to that entity for designated health services (DHS) covered by Medicare or Medicaid.<br><br>
+            <strong>Key characteristics:</strong><br>
+            ✦ This is a <strong>strict liability law</strong> — intent to violate is NOT required. Unlike the AKS (which requires knowing and willful conduct), the Stark Law is violated simply by making a prohibited referral, regardless of the physician's state of mind.<br>
+            ✦ Applies specifically to <strong>Medicare and Medicaid programs</strong><br>
+            ✦ "Designated health services" include: clinical laboratory services, physical therapy, radiology, radiation therapy, durable medical equipment, home health services, outpatient prescription drugs, and more<br>
+            ✦ "Financial relationship" includes both ownership interests and compensation arrangements<br><br>
+            <strong>Penalties:</strong> Denial of payment, refund of amounts received, civil monetary penalties up to $15,000 per service, $100,000 for circumvention schemes, and exclusion from federal programs.<br><br>
+            <strong>Exceptions:</strong> Many narrow exceptions exist (in-office ancillary services, group practice arrangements, employment relationships) — compliance is complex and requires careful legal guidance.
+          </div>
+        </div>
+        <div class="fraud-card" style="background:var(--red-lt);color:var(--red-dk)">
+          <div class="fraud-tag">Federal Law 4</div>
+          <div class="fraud-name">Criminal Health Care Fraud Statute (18 U.S.C. § 1347)</div>
+          <div class="fraud-body">
+            Prohibits <strong>knowingly and willfully executing a scheme — or attempting to execute a scheme</strong> — with the intent to:<br><br>
+            ✦ <strong>Defraud any health care program</strong> (Medicare, Medicaid, private insurance plans, or any health benefit program) — any plan or contract that provides healthcare benefits<br>
+            ✦ <strong>Obtain by false pretenses, representations, or promises</strong> any money or property owned by, or under the control of, any health care benefit program<br><br>
+            <strong>Key elements:</strong> Requires both (1) a scheme or attempt to execute a scheme AND (2) knowing and willful intent — this is a criminal statute requiring proof of mental state (mens rea).<br><br>
+            <strong>Examples of violations:</strong> Billing for services not rendered, upcoding (billing for a more expensive service than was provided), unbundling (billing separately for services that should be billed together), billing for medically unnecessary services, falsifying diagnoses to justify treatment or billing.<br><br>
+            <strong>Penalties:</strong> Up to 10 years imprisonment per violation; up to 20 years if serious bodily injury results; up to life imprisonment or death if death results; substantial fines.
+          </div>
+        </div>
+      </div>
+      <div class="tip amber"><strong>Comparing the four laws:</strong><br>
+        <strong>FCA</strong> = civil law allowing private parties to sue for false government claims; whistleblower rewards.<br>
+        <strong>AKS</strong> = prohibits paying/receiving anything of value for federal program referrals; requires knowing/willful conduct.<br>
+        <strong>Stark Law</strong> = prohibits physician self-referrals for designated health services; STRICT LIABILITY (no intent required).<br>
+        <strong>Criminal Fraud Statute</strong> = criminal prohibition on schemes to defraud healthcare programs; requires knowing/willful intent; most severe penalties.
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ FLASHCARDS ════════ -->
+  <div class="section" id="sec-flashcards">
+    <button class="fc-shuffle" onclick="shuffleCards()">⇄ Shuffle cards</button>
+    <div class="fc-nav">
+      <button class="fc-btn" onclick="prevCard()">&#8592;</button>
+      <div class="fc-counter" id="fc-counter">1 / 20</div>
+      <button class="fc-btn" onclick="nextCard()">&#8594;</button>
+    </div>
+    <div class="flip-wrap" onclick="flipCard()">
+      <div class="flip-inner" id="fc-inner">
+        <div class="flip-front"><div class="flip-term" id="fc-term">Stark Law — key distinction</div><div class="flip-hint">click to reveal</div></div>
+        <div class="flip-back"><div class="flip-def" id="fc-def">STRICT LIABILITY — intent is NOT required. Physicians with a financial interest cannot refer patients to that entity for designated health services (Medicare/Medicaid). Violated simply by making the prohibited referral.</div><div class="flip-ex" id="fc-ex">Contrast with Anti-Kickback Statute (requires knowing/willful conduct). Stark = self-referral restriction. AKS = remuneration for referrals. Both can apply to the same transaction.</div></div>
+      </div>
+    </div>
+    <div style="font-size:12px;color:var(--gray-400);text-align:center;margin-top:10px">Click to flip · Arrows to navigate</div>
+  </div>
+
+  <!-- ════════ QUIZ ════════ -->
+  <div class="section" id="sec-quiz">
+    <div class="card" id="quiz-card">
+      <div class="quiz-progress" id="quiz-dots"></div>
+      <div class="quiz-q-text" id="quiz-q"></div>
+      <div class="quiz-opts" id="quiz-opts"></div>
+      <div id="quiz-fb" style="display:none"></div>
+      <button class="quiz-next" id="quiz-next" onclick="nextQ()" style="display:none">Next question →</button>
+    </div>
+  </div>
+
+</div>
+<script>
+const SECS=['overview','privacy','hipaa-privacy','hipaa-security','fraud','flashcards','quiz'];
+const visited=new Set(['overview']);
+function showSec(id,btn){
+  SECS.forEach(s=>document.getElementById('sec-'+s).classList.remove('active'));
+  document.querySelectorAll('.nav-row .tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active'); btn.classList.add('active');
+  visited.add(id);
+  const pct=Math.round((visited.size/SECS.length)*100);
+  document.getElementById('prog-fill').style.width=pct+'%';
+  document.getElementById('prog-label').textContent=pct+'%';
+  if(id==='flashcards') renderCard();
+  if(id==='quiz'&&!quizStarted) startQuiz();
+}
+
+let allCards=[
+  {term:'Stark Law — key distinction',def:'STRICT LIABILITY — intent is NOT required. Physicians with a financial interest cannot refer patients to that entity for designated health services (Medicare/Medicaid).',ex:'Contrast with Anti-Kickback Statute (requires knowing/willful conduct). Stark = self-referral restriction. AKS = remuneration for referrals.'},
+  {term:'HIPAA Privacy Rule vs. Security Rule',def:'Privacy Rule: ALL forms of PHI (spoken, written, electronic) — who can access/use/disclose. Security Rule: ONLY electronic PHI (ePHI) — technical/administrative safeguards for transmission and storage.',ex:'Key exam distinction: Privacy = all forms; Security = electronic only. Both require CEs to protect PHI but address different aspects of protection.'},
+  {term:'Protected Health Information (PHI)',def:'Past, present, or future: (1) physical or mental health conditions; (2) documentation of provision of healthcare; (3) payment for healthcare — in any form (spoken, written, electronic)',ex:'ALL three categories are PHI; financial billing information is PHI; mental health information is PHI; historical conditions are PHI'},
+  {term:'Covered entities (CEs)',def:'Healthcare providers who conduct administrative and financial transactions in electronic form — includes all employees, volunteers, trainees, and all others under their control',ex:'Examples: hospitals, physician practices, health plans, healthcare clearinghouses. All must comply with HIPAA directly.'},
+  {term:'Business associates (BAs)',def:'Individuals or organizations providing services to covered entities that involve access to, use of, or disclosure of PHI — must sign a Business Associate Agreement (BAA)',ex:'Examples: billing companies, EHR vendors, cloud storage, transcription services, accounting firms. After HITECH, BAs are directly liable for HIPAA violations.'},
+  {term:'Qui tam — Federal False Claims Act',def:'Latin: "he who sues on behalf of the king as well as himself" — private individuals (whistleblowers) can file suit on the government\'s behalf and receive 15–30% of any court-awarded damages',ex:'Incentivizes insiders to report Medicare/Medicaid fraud; whistleblowers also protected from retaliation. Penalties: treble damages + $13K–$27K per false claim.'},
+  {term:'Federal Anti-Kickback Statute (AKS)',def:'Prohibits knowingly and willfully receiving or paying anything of value to influence referrals of federal healthcare program business',ex:'Penalties: fines up to $100K per violation, up to 10 years prison, exclusion from federal programs. Safe harbors exist for specific permissible arrangements.'},
+  {term:'Breach notification — 500+ records',def:'Any breach affecting 500+ records requires notifying: (1) affected individuals, (2) the media in the applicable state or jurisdiction, AND (3) HHS — without unreasonable delay',ex:'HHS OCR maintains a public database of large breaches since 2009 ("Wall of Shame"). Business associates must also follow notification guidelines.'},
+  {term:'Privileged communication',def:'Information held confidential within a protected relationship (physician-patient, attorney-client, priest-penitent, therapist-patient); the PATIENT holds the privilege and can waive or assert it',ex:'Privilege means information cannot be compelled in legal proceedings; physician cannot be forced to testify about privileged communications without patient waiver'},
+  {term:'Six constitutional amendments supporting privacy',def:'1st (speech/belief) · 3rd (home as sanctuary) · 4th (unreasonable searches) · 5th (self-incrimination) · 9th (rights retained by people) · 14th (due process/equal protection)',ex:'Privacy is NOT explicitly in the Constitution — it is derived from these amendments through Supreme Court interpretation'},
+  {term:'Treatment, Payment, Health Care Operations (TPO)',def:'The three purposes for which covered entities may share PHI without patient authorization under HIPAA',ex:'TPO covers the vast majority of day-to-day information sharing; most routine medical-to-medical disclosures fall under treatment or payment categories'},
+  {term:'HITECH Act (2009)',def:'Strengthened HIPAA by: making business associates directly liable, requiring breach notification, increasing penalties, expanding patient rights, and restricting sale of PHI without authorization',ex:'Part of the American Recovery and Reinvestment Act (ARRA); also created meaningful use incentives for EHR adoption; dramatically raised stakes for HIPAA compliance'},
+  {term:'Waiving confidentiality — 3 circumstances',def:'1. Third party requests/pays for medical exam (employment physical). 2. Patient records subpoenaed in a lawsuit. 3. Patient signs a written waiver authorizing release.',ex:'In employment exam scenario, information goes to the paying third party (employer) not the patient; the exam serves the employer\'s purpose, not the patient\'s'},
+  {term:'Criminal Health Care Fraud Statute',def:'Prohibits knowingly and willfully executing (or attempting) a scheme to: (1) defraud any health care program OR (2) obtain by false pretenses money/property from any health care benefit program',ex:'Penalties: up to 10 years prison per violation; up to 20 years if serious bodily injury; life/death if patient death results. Examples: billing for services not rendered, upcoding, unbundling.'},
+  {term:'Fraud vs. abuse (healthcare)',def:'Fraud = intentional deception; person KNEW the claim was false. Abuse = inconsistent with sound practices causing unnecessary costs; does NOT require intent — can result from carelessness.',ex:'Medicare Fraud Strike Force combines federal, state, and local law enforcement; much fraud goes undetected; fraudulent spending is not always separable from total healthcare costs'},
+  {term:'HIPAA Security Rule — three safeguard categories',def:'Administrative safeguards (policies, training, risk assessment) · Physical safeguards (facility access, workstation security, device controls) · Technical safeguards (authentication, encryption, audit logs)',ex:'All three categories required; administrative is most extensive; technical safeguards include unique user IDs, automatic logoff, encryption, and audit trail controls'},
+  {term:'Limited data set (HIPAA)',def:'A partially de-identified dataset with specific direct identifiers removed — used for research, public health, and healthcare operations; requires a Data Use Agreement (DUA)',ex:'Less burdensome than full authorization; still provides some privacy protection; allows use of geographic and date information that would be removed from fully de-identified data'},
+  {term:'Four federal privacy law principles',def:'1. Collect only what is necessary (minimum necessary). 2. Limit internal access to those who need it. 3. No external release without subject\'s permission. 4. Subject must know and have opportunity to check accuracy.',ex:'These principles underlie both general federal privacy law and HIPAA\'s specific requirements — HIPAA\'s "minimum necessary" rule directly implements principle #1'},
+  {term:'HHS OCR — breach database',def:'The HHS Office for Civil Rights (OCR) has maintained a public database of PHI breaches affecting 500+ records since 2009; commonly called the "Wall of Shame"',ex:'Searchable by covered entity, state, type of breach; powerful reputational deterrent; facilities appearing on the list face public scrutiny and potential patient attrition'},
+  {term:'Incidental use and disclosure (HIPAA)',def:'Secondary disclosures unavoidable in the course of permitted healthcare operations — permitted as long as reasonable precautions are taken; perfection is not required',ex:'Examples: patient overhearing a brief hallway conversation; visitor seeing a name on a whiteboard. Reasonable precautions (lower voice, screen positioning) required but cannot eliminate all risk.'},
+];
+let fcIdx=0,fcFlipped=false;
+function renderCard(){
+  const c=allCards[fcIdx];
+  document.getElementById('fc-term').textContent=c.term;
+  document.getElementById('fc-def').textContent=c.def;
+  document.getElementById('fc-ex').textContent=c.ex;
+  document.getElementById('fc-counter').textContent=(fcIdx+1)+' / '+allCards.length;
+  document.getElementById('fc-inner').classList.remove('flipped'); fcFlipped=false;
+}
+function flipCard(){ fcFlipped=!fcFlipped; document.getElementById('fc-inner').classList.toggle('flipped',fcFlipped); }
+function nextCard(){ fcIdx=(fcIdx+1)%allCards.length; renderCard(); }
+function prevCard(){ fcIdx=(fcIdx-1+allCards.length)%allCards.length; renderCard(); }
+function shuffleCards(){
+  for(let i=allCards.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [allCards[i],allCards[j]]=[allCards[j],allCards[i]]; }
+  fcIdx=0; renderCard();
+}
+
+const QUIZ=[
+  {q:'A hospital billing company receives patient medical records to process Medicare claims. The billing company is BEST classified as a:',ans:'Business associate — an organization providing services to a covered entity that involve access to, use of, or disclosure of PHI',opts:['Covered entity — because they directly handle Medicare billing and transmit claims electronically','Government contractor — because their primary client is Medicare, a federal program','Business associate — an organization providing services to a covered entity that involve access to, use of, or disclosure of PHI','Third-party payer — because they process payment claims on behalf of the healthcare provider']},
+  {q:'A hospital experiences a ransomware attack that exposes the records of 3,000 patients. Which of the following notifications is REQUIRED under HIPAA\'s breach notification rule?',ans:'Notify the affected patients, AND notify the media in the applicable state, AND notify HHS — all three are required for breaches of 500+ records',opts:['Notify only the affected patients — individual notification is the only requirement for healthcare breaches','Notify HHS and the patients affected, but media notification is only required for intentional breaches','Notify the affected patients, AND notify the media in the applicable state, AND notify HHS — all three are required for breaches of 500+ records','File a report with local law enforcement and notify HHS — patient notification is optional for cyberattacks']},
+  {q:'The HIPAA Privacy Rule applies to PHI in which of the following forms?',ans:'All forms — spoken (verbal), written (paper), and electronic',opts:['Electronic form only — HIPAA was designed specifically for electronic health records','Written and electronic forms only — verbal communications are excluded from HIPAA protections','All forms — spoken (verbal), written (paper), and electronic','Electronic and written forms, except for records stored longer than seven years']},
+  {q:'Which of the following BEST distinguishes the Stark Law from the Anti-Kickback Statute?',ans:'The Stark Law is a strict liability law — intent is not required; making the prohibited referral is the violation regardless of purpose or knowledge',opts:['The Stark Law applies to private insurance, while the AKS applies only to Medicare and Medicaid programs','The Stark Law requires proof that the physician knowingly and willfully intended to benefit financially from the referral','The Stark Law is a strict liability law — intent is not required; making the prohibited referral is the violation regardless of purpose or knowledge','The Stark Law carries criminal penalties including imprisonment, while the AKS carries only civil monetary penalties']},
+  {q:'A healthcare employee discovers that their employer is submitting false Medicare claims. Under the Federal False Claims Act\'s qui tam provisions, this employee:',ans:'Can file a sealed lawsuit on the government\'s behalf and may receive 15–30% of any court-awarded damages, with whistleblower protection from retaliation',opts:['Must report the fraud to the FBI; private individuals cannot file lawsuits under the FCA','Is required to report to their supervisor first before any external report can be made legally','Can file a sealed lawsuit on the government\'s behalf and may receive 15–30% of any court-awarded damages, with whistleblower protection from retaliation','May report to HHS but forfeits any right to recover damages as a private individual']},
+  {q:'HIPAA permits a covered entity to share PHI with other treating providers without specific patient authorization under which category of permitted disclosure?',ans:'Treatment, Payment, or Health Care Operations (TPO) — sharing for treatment purposes does not require individual patient authorization',opts:['Public interest and benefit activities — sharing with other providers serves the public health interest','Limited data set exception — removing direct identifiers allows sharing with any entity without authorization','Treatment, Payment, or Health Care Operations (TPO) — sharing for treatment purposes does not require individual patient authorization','Incidental disclosure — sharing with other providers is unavoidable in the course of normal healthcare operations']},
+  {q:'A physician owns a 30% interest in a free-standing radiology center. The Stark Law would prohibit the physician from:',ans:'Referring Medicare or Medicaid patients to the radiology center for designated health services because of the physician\'s financial interest',opts:['Accepting any referrals FROM the radiology center for patients covered by Medicare or Medicaid','Advertising the radiology center\'s services to their existing patient panel in their medical practice','Referring Medicare or Medicaid patients to the radiology center for designated health services because of the physician\'s financial interest','Accepting a reduced imaging rate for their personally-needed diagnostic services at the center they own']},
+  {q:'A patient overhears a brief hallway conversation between two nurses discussing her diagnosis. Under HIPAA, this is BEST classified as:',ans:'An incidental disclosure — permitted as long as reasonable precautions (lowering voices, moving to a private area) were taken; perfection is not required',opts:['A reportable breach requiring patient notification and HHS reporting within 60 days','A violation of the Security Rule requiring implementation of additional technical safeguards','An incidental disclosure — permitted as long as reasonable precautions (lowering voices, moving to a private area) were taken; perfection is not required','A violation of the Privacy Rule requiring the practice to revise its minimum necessary access policies']},
+  {q:'The 4th Amendment\'s role in establishing the constitutional right to privacy in healthcare is BEST described as:',ans:'It protects against unreasonable searches and seizures — establishing that persons and their information are protected from unauthorized government intrusion',opts:['It gives Congress the authority to enact federal privacy laws like HIPAA that govern healthcare information','It prohibits the government from compelling individuals to testify against themselves — including disclosing personal health information','It protects against unreasonable searches and seizures — establishing that persons and their information are protected from unauthorized government intrusion','It establishes equal protection under the law, ensuring all patients receive the same privacy protections regardless of their diagnosis']},
+  {q:'The HITECH Act (2009) strengthened HIPAA in all of the following ways EXCEPT:',ans:'Creating the original HIPAA Privacy and Security Rules — those rules were established by HIPAA itself in 1996, not HITECH',opts:['Making business associates directly liable for HIPAA violations','Requiring breach notification to patients, media, and HHS for large breaches','Increasing civil and criminal penalties for HIPAA violations','Creating the original HIPAA Privacy and Security Rules — those rules were established by HIPAA itself in 1996, not HITECH']},
+];
+let qIdx=0,score=0,results=[],quizStarted=false;
+function startQuiz(){ quizStarted=true; qIdx=0; score=0; results=[]; renderQ(); }
+function renderQ(){
+  const q=QUIZ[qIdx];
+  document.getElementById('quiz-dots').innerHTML=QUIZ.map((_,i)=>`<div class="q-dot ${i<results.length?(results[i]?'pass':'fail'):''}" title="Q${i+1}"></div>`).join('');
+  document.getElementById('quiz-q').textContent=(qIdx+1)+'. '+q.q;
+  document.getElementById('quiz-opts').innerHTML=q.opts.map(o=>`<button class="q-opt" onclick="checkAns(this,'${o.replace(/'/g,"\\'")}','${q.ans.replace(/'/g,"\\'")}')">${o}</button>`).join('');
+  const fb=document.getElementById('quiz-fb'); fb.style.display='none'; fb.className='q-fb';
+  document.getElementById('quiz-next').style.display='none';
+}
+function checkAns(btn,chosen,correct){
+  document.querySelectorAll('.q-opt').forEach(b=>{ b.disabled=true; if(b.textContent===correct) b.classList.add('correct'); });
+  const ok=chosen===correct;
+  if(ok){ score++; btn.classList.add('correct'); } else btn.classList.add('wrong');
+  results.push(ok);
+  document.getElementById('quiz-dots').innerHTML=QUIZ.map((_,i)=>`<div class="q-dot ${i<results.length?(results[i]?'pass':'fail'):''}" title="Q${i+1}"></div>`).join('');
+  const fb=document.getElementById('quiz-fb');
+  fb.style.display='block'; fb.className='q-fb '+(ok?'correct':'wrong');
+  fb.textContent=ok?'✓ Correct!':`✗ Correct answer: ${correct}`;
+  const nxt=document.getElementById('quiz-next');
+  nxt.style.display='inline-block';
+  nxt.textContent=qIdx===QUIZ.length-1?'See results':'Next question →';
+}
+function nextQ(){ qIdx++; if(qIdx>=QUIZ.length){ showScore(); return; } renderQ(); }
+function showScore(){
+  const pct=Math.round((score/QUIZ.length)*100);
+  const cls=pct>=80?'great':pct>=60?'ok':'retry';
+  const msg=pct>=90?'Excellent! Chapter 8 mastered.':pct>=70?'Good work! Review HIPAA distinctions and fraud laws.':'Keep studying — revisit the Privacy/Security Rule distinction and the four fraud laws.';
+  document.getElementById('quiz-card').innerHTML=`<div class="score-wrap"><div class="score-big ${cls}">${score}/${QUIZ.length}</div><div style="font-size:13px;color:var(--gray-400);margin-top:4px">${pct}%</div><div class="score-msg">${msg}</div><button class="retry-btn" onclick="retakeQuiz()">Retake quiz</button></div>`;
+}
+function retakeQuiz(){
+  document.getElementById('quiz-card').innerHTML=`<div class="quiz-progress" id="quiz-dots"></div><div class="quiz-q-text" id="quiz-q"></div><div class="quiz-opts" id="quiz-opts"></div><div id="quiz-fb" style="display:none"></div><button class="quiz-next" id="quiz-next" onclick="nextQ()" style="display:none">Next question →</button>`;
+  qIdx=0; score=0; results=[]; renderQ();
+}
+</script>
+</body>
+</html>
